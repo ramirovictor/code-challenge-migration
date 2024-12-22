@@ -1,0 +1,14 @@
+server:
+  port: 8080
+
+dummyjson:
+  base-url: https://dummyjson.com/products
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*" # Expõe todos os endpoints do Actuator
+  endpoint:
+    health:
+      show-details: always # Exibe detalhes completos no endpoint de saúde
