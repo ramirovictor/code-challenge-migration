@@ -86,4 +86,17 @@ public class ProductControllerTest {
                     assertEquals("Eyeshadow Palette with Mirror", product.getTitle(), "Product title should match");
                 });
     }
+
+    @Test
+    public void testGetProductById_NotFound() {
+
+        mockWebServer.enqueue(new MockResponse()
+                .setResponseCode(404)
+                .addHeader("Content-Type", "application/json"));
+
+        webTestClient.get()
+                .uri("/api/products/999")
+                .exchange()
+                .expectStatus().isNotFound();
+    }
 }
